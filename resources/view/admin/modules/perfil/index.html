@@ -1,0 +1,92 @@
+
+{{statusError}} {{statusSuccess}}
+
+<!-- PERFIL -->
+<!-- CARD PERFIL -->
+<div class="container-box">
+  <div class="box">
+    <div class="banner">
+      <img src="{{URL}}/resources/images/profile.png" alt="Profile" />
+    </div>
+    <div class="menu">
+      <div class="opener"></div>
+    </div>
+    <h2 class="name">{{nome}}</h2>
+    <div class="title">{{email}}</div>
+    <div class="actions">
+      <div class="info-matricula">
+        <h2>
+          <a href="#">
+            <span>{{matricula}}</span>
+            <small>Matrícula</small>
+          </a>
+        </h2>
+      </div>
+      <div class="follow-btn">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#modal">
+          Alterar senha
+        </button>
+      </div>
+      <div class="desc"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modal"
+  tabindex="-1"
+  aria-labelledby="modallabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modallabel">Redefinição de Senha</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form method="post">
+          <div class="mb-3">
+            <label for="senha" class="form-label">Senha atual:</label>
+            <input type="password" class="form-control" id="senha" name="senha" required />
+          </div>
+          <div class="mb-3">
+            <label for="nsenha" class="form-label">Nova senha:</label>
+            <input type="password" class="form-control" id="nsenha" name="nsenha" required />
+          </div>
+          <div class="mb-3">
+            <label for="csenha" class="form-label">Confirme a senha:</label>
+            <input type="password" class="form-control" id="csenha" name="csenha" required />
+            <div class="invalid-feedback">As senha não conferem</div>
+          </div>
+          <div class="d-grid gap-2 mt-4 d-md-flex justify-content-md-between">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Fechar
+            </button>
+            <button type="submit" class="btn btn-primary submitSenha">
+              Salvar Mudanças
+            </button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FIM MODAL -->
+<script
+  src="https://kit.fontawesome.com/cf4fb9e680.js"
+  crossorigin="anonymous"
+></script>
+<script src="{{URL}}/resources/js/adminHome.js"></script>

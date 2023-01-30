@@ -1,0 +1,17 @@
+<h1>{{title}}</h1>
+<hr />
+
+<!-- FORMULÁRIO -->
+<form method="post">
+  <!-- Reagente -->
+  <div class="mb-3">
+    Você realmente deseja excluir o material <b>#{{id_material}}</b>, CAS:
+    <b>{{cas}}</b> ?
+  </div>
+  <hr />
+  <!-- SUBMIT -->
+  <div class="d-grid gap-2 mb-3 d-md-flex justify-content-md-center">
+    <a href="{{URL}}/admin/materiais" class="btn btn-secondary">Voltar</a>
+    <input type="submit" class="btn btn-danger" value="Deletar" />
+  </div>
+</form>

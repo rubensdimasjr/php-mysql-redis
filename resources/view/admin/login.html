@@ -1,0 +1,116 @@
+<style>
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+  }
+
+  .form-signin .checkbox {
+    font-weight: 400;
+  }
+
+  .form-signin .form-floating:focus-within {
+    z-index: 2;
+  }
+
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+</style>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light">
+  <div class="container">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mt-3 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="{{URL}}">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">CONTATO</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">PRIVACIDADE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">TERMOS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">SUPORTE</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<main class="form-signin text-center">
+  <form method="post">
+    <img
+      class="mb-4"
+      src="{{URL}}/resources/images/Vertical-Colorida.jpg"
+      alt="Uniceplac"
+      width="180"
+      height="180"
+    />
+    <h1 class="h3 mb-3 fw-normal">Por favor realize o login</h1>
+
+    {{status}}
+    <div class="form-floating">
+      <input
+        type="email"
+        class="form-control"
+        id="floatingInput"
+        placeholder="nome@exemplo.com"
+        name="email"
+        required
+      />
+      <label for="floatingInput">E-mail</label>
+    </div>
+    <div class="form-floating">
+      <input
+        type="password"
+        class="form-control"
+        id="floatingPassword"
+        placeholder="Password"
+        name="senha"
+        required
+      />
+      <label for="floatingPassword">Senha</label>
+    </div>
+
+    <div class="checkbox mb-3">
+      <label> <input type="checkbox" value="lembrar" /> Lembrar dados </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2022–presente</p>
+  </form>
+</main>

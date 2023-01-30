@@ -1,0 +1,130 @@
+<h1 class="mt-md-5 mt-3">{{title}}</h1>
+<hr />
+{{status}}
+<!-- FORMULÁRIO -->
+<form method="post">
+  <!-- Reagente -->
+  <div class="mb-3">
+    <label for="reagente" class="form-label">Reagente:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="reagente"
+      id="reagente"
+      placeholder="Reagente"
+      value="{{reagente}}"
+      required
+    />
+  </div>
+  <!-- Lote e Fabricante -->
+  <div class="row mb-3">
+    <div class="col">
+      <label for="lote" class="form-label">Lote:</label>
+      <input
+        type="text"
+        class="form-control"
+        name="lote"
+        id="lote"
+        placeholder="Lote"
+        value="{{lote}}"
+        required
+      />
+    </div>
+    <div class="col">
+      <label for="fabricante" class="form-label">Fabricante:</label>
+      <input
+        type="text"
+        class="form-control"
+        name="fabricante"
+        id="fabricante"
+        placeholder="Fabricante"
+        value="{{fabricante}}"
+        required
+      />
+    </div>
+  </div>
+  <!-- Fabricação e Validade-->
+  <div class="row mb-3">
+    <div class="col">
+      <label for="fabricacao" class="form-label">Fabricação:</label>
+      <input
+        type="month"
+        class="form-control"
+        name="fabricacao"
+        id="fabricacao"
+        value="{{fabricacao}}"
+        required
+      />
+    </div>
+    <div class="col">
+      <label for="validade" class="form-label">Validade:</label>
+      <input
+        type="month"
+        class="form-control"
+        name="validade"
+        id="validade"
+        value="{{validade}}"
+        required
+      />
+    </div>
+  </div>
+  <!-- Embalagem Original -->
+  <div class="row mb-3">
+    <div class="col">
+      <h5>Embalagem Original?</h5>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="embalagem_original"
+          id="embalagemOpcao1"
+          value="Sim"
+          {{embalagem_original1}}
+        />
+        <label class="form-check-label" for="embalagemOpcao1"> Sim </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="embalagem_original"
+          value="Não"
+          id="embalagemOpcao2"
+          {{embalagem_original2}}
+        />
+        <label class="form-check-label" for="embalagemOpcao2"> Não </label>
+      </div>
+    </div>
+    <div class="col">
+      <label for="quantidade" class="form-label">QTD(gramas):</label>
+      <input
+        type="number"
+        class="form-control"
+        name="quantidade"
+        id="quantidade"
+        value="{{quantidade}}"
+        placeholder="Quantidade(g)"
+        required
+      />
+    </div>
+  </div>
+  <!-- CAS -->
+  <div class="mb-3">
+    <label for="cas" class="form-label">CAS:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="cas"
+      id="cas"
+      value="{{cas}}"
+      placeholder="CAS"
+      required
+    />
+  </div>
+  <hr />
+  <!-- SUBMIT -->
+  <div class="d-grid gap-2 mb-3 d-md-flex justify-content-md-center">
+    <a href="{{URL}}/admin/materiais" class="btn btn-secondary">Voltar</a>
+    <input type="submit" class="btn btn-success" value="Editar" />
+  </div>
+</form>

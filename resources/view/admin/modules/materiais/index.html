@@ -1,0 +1,183 @@
+{{status}}
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modal"
+  tabindex="-1"
+  aria-labelledby="modalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel">Novo Material</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!-- FORMULÁRIO -->
+        <form method="post" action="?page=1">
+          <!-- Reagente -->
+          <div class="mb-3">
+            <input
+              class="form-control"
+              type="text"
+              name="reagente"
+              id="reagente"
+              placeholder="Reagente"
+              required
+            />
+          </div>
+          <!-- Lote e Fabricante -->
+          <div class="row mb-3">
+            <div class="col">
+              <input
+                type="text"
+                class="form-control"
+                name="lote"
+                id="lote"
+                placeholder="Lote"
+                required
+              />
+            </div>
+            <div class="col">
+              <input
+                type="text"
+                class="form-control"
+                name="fabricante"
+                id="fabricante"
+                placeholder="Fabricante"
+                required
+              />
+            </div>
+          </div>
+          <!-- Validade e Quantidade -->
+          <div class="row mb-3">
+            <div class="col">
+              <label for="fabricacao"> Fabricação: </label>
+              <input
+                type="month"
+                class="form-control"
+                name="fabricacao"
+                id="fabricacao"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="validade"> Validade: </label>
+              <input
+                type="month"
+                class="form-control"
+                name="validade"
+                id="validade"
+                required
+              />
+            </div>
+          </div>
+          <!-- Embalagem Original -->
+          <div class="row mb-3">
+            <div class="col">
+              <h5>Embalagem Original?</h5>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="embalagem_original"
+                  id="embalagemOpcao1"
+                  value="Sim"
+                  checked
+                />
+                <label class="form-check-label" for="embalagemOpcao1">
+                  Sim
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="embalagem_original"
+                  value="Não"
+                  id="embalagemOpcao2"
+                />
+                <label class="form-check-label" for="embalagemOpcao2">
+                  Não
+                </label>
+              </div>
+            </div>
+            <div class="col">
+              <input
+                type="number"
+                class="form-control"
+                name="quantidade"
+                id="quantidade"
+                placeholder="Quantidade(g)"
+                required
+              />
+            </div>
+          </div>
+          <!-- CAS -->
+          <div class="mb-3">
+            <input
+              class="form-control"
+              type="text"
+              name="cas"
+              id="cas"
+              placeholder="CAS"
+              required
+            />
+          </div>
+          <!-- SUBMIT -->
+          <div class="d-grid gap-2 mb-3 d-md-flex justify-content-md-end">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Fechar
+            </button>
+            <input type="submit" class="btn btn-success" value="Adicionar" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FIM MODAL -->
+
+<hr />
+<h1 class="text-center mb-3">Lista de Materiais</h1>
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Reagente</th>
+      <th scope="col">Lote</th>
+      <th scope="col">Fabricante</th>
+      <th scope="col">Fabricação</th>
+      <th scope="col">Validade</th>
+      <th scope="col">QTD</th>
+      <th scope="col">Embalagem Original</th>
+      <th scope="col">CAS</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{itens}}
+  </tbody>
+</table>
+{{pagination}}
+<div class="d-flex justify-content-center">
+  <button
+    type="button"
+    class="btn btn-success"
+    data-bs-toggle="modal"
+    data-bs-target="#modal"
+  >
+    Cadastrar
+  </button>
+</div>

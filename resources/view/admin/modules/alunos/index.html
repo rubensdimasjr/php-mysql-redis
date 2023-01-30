@@ -1,0 +1,110 @@
+{{status}}
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modal"
+  tabindex="-1"
+  aria-labelledby="modalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel">Novo Aluno</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!-- FORMULÁRIO -->
+        <form method="post" action="?page=1">
+          <div class="row mb-3">
+            <div class="col">
+              <label for="nome" class="form-label">Nome</label>
+              <input
+                type="text"
+                class="form-control"
+                name="nome"
+                id="nome"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="email" class="form-label">E-mail</label>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                id="email"
+                required
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="matricula" class="form-label">Matricula</label>
+            <input
+              type="text"
+              class="form-control"
+              name="matricula"
+              id="matricula"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="senha" class="form-label">Senha</label>
+            <input
+              type="password"
+              class="form-control"
+              name="senha"
+              id="senha"
+              required
+            />
+          </div>
+          <!-- SUBMIT -->
+          <div class="d-grid gap-2 mb-3 d-md-flex justify-content-md-end">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Fechar
+            </button>
+            <input type="submit" class="btn btn-success" value="Criar" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FIM MODAL -->
+<hr />
+<h1 class="text-center mb-3">Lista de Alunos</h1>
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Matricula</th>
+      <th scope="col">Açoes</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{atributos}}
+  </tbody>
+</table>
+{{pagination}}
+<div class="d-flex justify-content-center">
+  <button
+    type="button"
+    class="btn btn-success"
+    data-bs-toggle="modal"
+    data-bs-target="#modal"
+  >
+    Cadastrar Aluno
+  </button>
+</div>

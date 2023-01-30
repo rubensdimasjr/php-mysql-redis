@@ -1,0 +1,176 @@
+{{status}}
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modal"
+  tabindex="-1"
+  aria-labelledby="modalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel">Novo Paciente</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!-- FORMULÁRIO -->
+        <form method="post" action="?page=1">
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input
+              type="text"
+              class="form-control"
+              name="nome"
+              id="nome"
+              required
+            />
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              <label for="email" class="form-label">E-mail</label>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                id="email"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="contato" class="form-label">Contato</label>
+              <input
+                type="text"
+                class="form-control"
+                name="contato"
+                id="contato"
+                required
+              />
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              <label for="genero" class="form-label">Gênero:</label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="genero"
+                  id="genero1"
+                  value="M"
+                />
+                <label class="form-check-label" for="genero1">
+                  Masculino
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="genero"
+                  id="genero2"
+                  value="F"
+                  checked
+                />
+                <label class="form-check-label" for="genero2"> Feminino </label>
+              </div>
+            </div>
+            <div class="col">
+              <label for="situacao" class="form-label">Situação:</label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="situacao"
+                  id="situacao1"
+                  value="Atendido"
+                />
+                <label class="form-check-label" for="situacao1">
+                  Atendido
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="situacao"
+                  id="situacao2"
+                  value="Indeferido"
+                />
+                <label class="form-check-label" for="situacao2">
+                  Indeferido
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="situacao"
+                  id="situacao3"
+                  value="Agendado"
+                  checked
+                />
+                <label class="form-check-label" for="situacao3">
+                  Agendado
+                </label>
+              </div>
+            </div>
+          </div>
+          <!-- SUBMIT -->
+          <div class="d-grid gap-2 mt-5 d-md-flex justify-content-md-center">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Fechar
+            </button>
+            <input type="submit" class="btn btn-success" value="Criar" />
+          </div>
+        </form>
+        <!-- FIM FORMULÁRIO DE CADASTRO DE PACIENTE -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FIM MODAL -->
+<hr />
+<div class="container">
+  <div class="row my-5">
+    <div class="col table-responsive">
+      <h1 class="text-center">Lista de Pacientes</h1>
+      <table class="table mt-3">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Contato</th>
+            <th scope="col">Gênero</th>
+            <th scope="col">Situação</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{atributos}}
+        </tbody>
+      </table>
+      {{pagination}}
+      <div class="d-flex justify-content-center">
+        <button
+          type="button"
+          class="btn btn-success"
+          data-bs-toggle="modal"
+          data-bs-target="#modal"
+        >
+          Cadastrar Paciente
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

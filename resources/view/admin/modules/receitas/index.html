@@ -1,0 +1,160 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-sm-12 mb-sm-3">
+      <div class="card mx-auto mb-5">
+        <div class="card-header">
+          <h3 class="text-center fw-bold">Formulário de Receita</h3>
+        </div>
+        <div class="card-body">
+          <form method="post">
+            <div class="mb-3">
+              <label for="item-receituario" class="form-label"
+                >Itens da Receita</label
+              >
+              <div class="row position-relative">
+                <div class="col-sm-12 col-md-4 mb-2">
+                  <input
+                    type="text"
+                    class="form-control input"
+                    id="medicacao"
+                    placeholder="Medicação"
+                  />
+                  <div class="invalid-tooltip">
+                    O campo não pode estar vazio!
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-4 mb-2">
+                  <input
+                    type="text"
+                    class="form-control input"
+                    id="dosagem"
+                    placeholder="Dosagem"
+                  />
+                  <div class="invalid-tooltip">
+                    O campo não pode estar vazio!
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-4 mb-2">
+                  <input
+                    type="text"
+                    class="form-control input"
+                    id="consumo"
+                    placeholder="Consumo"
+                  />
+                  <div class="invalid-tooltip">
+                    O campo não pode estar vazio!
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3 d-flex justify-content-end">
+              <button class="btn btn-success botao">Adicionar</button>
+            </div>
+            <div class="lista"></div>
+            <div class="my-3">
+              <label for="obs" class="form-label">Observações: </label>
+              <textarea
+                name="obs"
+                class="form-control"
+                id="obs"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <div class="mb-2 d-flex justify-content-center">
+              <button id="gerar" class="btn btn-primary">Gerar Receita</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+  crossorigin="anonymous"
+></script>
+<script>
+  let botao = $(".botao");
+  let input = $(".input");
+  let lista = $(".lista");
+
+  // QUANDO CLICA NO BOTÃO DE ADICIONAR
+  $(botao).click(function (e) {
+    e.preventDefault();
+    capturado = [];
+
+    $.each(input, function (k, v) {
+      if (input[k].value === "") {
+        $(input[k]).addClass("is-invalid");
+      }
+
+      $(v).click(function () {
+        if ($(v).hasClass("is-invalid")) {
+          $(v).removeClass("is-invalid");
+        }
+      });
+
+      $(v).keyup(function (e) {
+        const campoInput = e.currentTarget;
+        var wordsV = campoInput.value;
+        if (wordsV.length > 1 && $(campoInput).hasClass("is-invalid")) {
+          $(campoInput).removeClass("is-invalid");
+        }
+      });
+    });
+
+    if (
+      $(input[0]).val().length !== 0 &&
+      $(input[1]).val().length !== 0 &&
+      $(input[2]).val().length !== 0
+    ) {
+      var arrayItems = ["div"];
+      arrayLenght = arrayItems.length;
+
+      for (i = 0; i < arrayLenght; i++) {
+        let count = lista.childElementCount;
+
+        $(
+          '<div class="input-group mb-3">' +
+            '<input type="text" class="form-control" name="medicacao[]" id="medicacao" value="' +
+            input[0].value +
+            ", " +
+            input[1].value +
+            ", " +
+            input[2].value +
+            '" required>' +
+            '<button class="btn btn-outline-danger btnExclui" type="button">Excluir</button>' +
+            "</div>"
+        ).appendTo(lista);
+      }
+
+      $.each(input, function (i, v) {
+        input[i].value = "";
+      });
+
+      let btnExclui = $(".btnExclui");
+
+      //QUANDO CLICA BOTÃO EXCLUIR
+      $.each(btnExclui, function (k, v) {
+        $(v).click((e) => {
+          botaoAtual = e.currentTarget;
+          divBotao = botaoAtual.parentNode;
+          divBotao.remove();
+        });
+      });
+    }
+  });
+
+  $("#gerar").click(function (e) {
+    e.preventDefault();
+
+    if (lista[0].childElementCount > 0) {
+      $("#gerar").unbind("click").click();
+    } else if (lista[0].childElementCount == 0) {
+      alert("Insira itens para gerar o receituário!");
+      input[0].focus();
+    }
+  });
+</script>

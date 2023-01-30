@@ -1,0 +1,59 @@
+<h1 class="mt-md-5 mt-3">{{title}}</h1>
+<hr />
+{{status}}
+<!-- FORMULÁRIO -->
+<form method="post">
+  <!-- Nome -->
+  <div class="mb-3">
+    <label for="nome" class="form-label">Nome</label>
+    <input
+      type="text"
+      class="form-control"
+      name="nome"
+      id="nome"
+      value="{{nome}}"
+      required
+    />
+  </div>
+  <!-- E-mail e Contato-->
+  <div class="row mb-3">
+    <div class="col">
+      <label for="email" class="form-label">E-mail</label>
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        id="email"
+        value="{{email}}"
+        required
+      />
+    </div>
+    <div class="col">
+      <label for="contato" class="form-label">Contato</label>
+      <input
+        type="text"
+        class="form-control"
+        name="contato"
+        id="contato"
+        value="{{contato}}"
+        required
+      />
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="genero" class="form-label">Gênero:</label>
+      {{generos}}
+    </div>
+    <div class="col">
+      <label for="situacao" class="form-label">Situação:</label>
+      {{situacoes}}
+    </div>
+  </div>
+  <hr />
+  <!-- SUBMIT -->
+  <div class="d-grid gap-2 my-5 d-md-flex justify-content-md-center">
+    <a href="{{URL}}/admin/pacientes" class="btn btn-secondary">Voltar</a>
+    <input type="submit" class="btn btn-success" value="Editar" />
+  </div>
+</form>

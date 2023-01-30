@@ -1,0 +1,42 @@
+:root {
+  --main: #b3d2c2;
+  --nav: #3b7454;
+  --orange: #ca8d5a;
+}
+
+/* Font site */
+@font-face {
+  font-family: "Meta";
+  src: url("../font/meta-normal.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Reset Css */
+body {
+  font-family: "Meta", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Meta;
+}
+
+nav {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+/* Custom Style */
+main {
+  background: var(--main);
+  height: 900px;
+}
+.navbar {
+  background-color: var(--nav);
+}
+footer {
+  background: var(--main);
+}
+.text-orange {
+  color: var(--orange);
+}
