@@ -22,7 +22,7 @@ class Paciente
   public function cadastrar()
   {
     /* INSERE NO BANCO DE DADOS */
-    $this->id = (new Database('paciente'))->insert([
+    $this->id = (new Database)->insert('paciente',[
       'nome' => $this->nome,
       'email' => $this->email,
       'contato' => $this->contato,
@@ -37,7 +37,7 @@ class Paciente
   public function atualizar()
   {
     /* ATUALIZA NO BANCO DE DADOS */
-    return (new Database('paciente'))->update('id = ' . $this->id, [
+    return (new Database)->update('paciente','id = ' . $this->id, [
       'nome' => $this->nome,
       'email' => $this->email,
       'contato' => $this->contato,
@@ -49,7 +49,7 @@ class Paciente
   public function excluir()
   {
     /* EXCLUI O PACIENTE NO BANCO DE DADOS */
-    return (new Database('paciente'))->delete('id = ' . $this->id);
+    return (new Database)->delete('paciente','id = ' . $this->id);
   }
 
   /**
@@ -62,7 +62,7 @@ class Paciente
    */
   public static function getAtributos($where = null, $order = null, $limit = null, $fields = '*')
   {
-    return (new Database('paciente'))->select($where, $order, $limit, $fields);
+    return (new Database)->select('paciente',$where, $order, $limit, $fields);
   }
 
   /**
