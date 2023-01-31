@@ -4,10 +4,23 @@ namespace App\Controller\Admin;
 
 use \App\Utils\View;
 use \App\Model\Entity\User as EntityUser;
+use App\Utils\Redis as UtilsRedis;
 use \WilliamCosta\DatabaseManager\Pagination;
+use Predis\Client as Redis;
+use stdClass;
 
 class Alunos extends Page
 {
+
+  /**
+   * Método responsável por retornar a classe do Redis
+   * @return Redis
+   */
+  private static function getRedis(){
+    $redis = new Redis();
+    return $redis;
+  }
+
   /**
    * Método responsável por obter a renderização dos atributos do aluno 
    * @param Request
@@ -29,16 +42,15 @@ class Alunos extends Page
     /* Instancia de paginação */
     $obPagination = new Pagination($quantidadeTotal, $paginaAtual, 20);
 
-    /* Resultados da página */
-    $results = EntityUser::getAtributos('tipo_usuario = "aluno"', 'id ASC', $obPagination->getLimit(), ' id, nome, email, matricula');
-
-    /* Renderiza o atributo */
-    while ($obUser = $results->fetchObject(EntityUser::class)) {
+    /**
+     * EXIBIÇÃO DOS DADOS
+     */
+    foreach(EntityUser::getAllDataOrCache($obPagination) as $item){
       $atributos .= View::render('admin/modules/alunos/atributo', [
-        'id' => $obUser->id,
-        'nome' => $obUser->nome,
-        'email' => $obUser->email,
-        'matricula' => $obUser->matricula
+        'id' => $item['id'],
+        'nome' => $item['nome'],
+        'email' => $item['email'],
+        'matricula' => $item['matricula']
       ]);
     }
 
@@ -70,7 +82,6 @@ class Alunos extends Page
    */
   public static function setNewAluno($request)
   {
-
     /* DADOS DO POST */
     $postVars = $request->getPostVars();
 
@@ -126,11 +137,11 @@ class Alunos extends Page
   public static function getEditAluno($request, $id)
   {
 
-    /* OBTEM ALUNO NO BANCO DE DADOS */
-    $obUser = EntityUser::getAlunoById($id);
+    /* OBTEM ALUNO NO BANCO DE DADOS ou REDIS */
+    $obUser = (object) EntityUser::getDataOrCache($id);
 
     /* CASO NÃO EXISTA */
-    if (!$obUser instanceof EntityUser) {
+    if (!$obUser instanceof EntityUser && !$obUser instanceof stdClass) {
       $request->getRouter()->redirect('/admin/alunos');
     }
 
@@ -156,7 +167,7 @@ class Alunos extends Page
   public static function setEditAluno($request, $id)
   {
 
-    /* OBTEM MATERIAL NO BANCO DE DADOS */
+    /* OBTEM ALUNO NO BANCO DE DADOS ou REDIS */
     $obUser = EntityUser::getAlunoById($id);
 
     /* CASO NÃO EXISTA */
@@ -177,8 +188,19 @@ class Alunos extends Page
     $obUser->nome = $postVars['nome'] ?? $obUser->nome;
     $obUser->email = $postVars['email'] ?? $obUser->email;
     $obUser->matricula = $postVars['matricula'] ?? $obUser->matricula;
-    $obUser->senha = $cripSenha ?? $obUser->senha;
+    $obUser->senha = $cripSenha ?? '';
     $obUser->atualizar();
+
+    /**
+     * ATUALIZA OS DADOS NO REDIS
+     */
+    $obRedis = new UtilsRedis;
+    $obRedis->edit('alunos', 'aluno'.$id, [
+      'id' => $id,
+      'nome' => $postVars['nome'] ?? $obUser->nome,
+      'email' => $postVars['email'] ?? $obUser->email,
+      'matricula' => $postVars['matricula'] ?? $obUser->matricula
+    ]);
 
     /* REDIRECIONA O USUARIO */
     $request->getRouter()->redirect('/admin/alunos/' . $obUser->id . '/edit?status=updated');
@@ -193,11 +215,11 @@ class Alunos extends Page
   public static function getDeleteAluno($request, $id)
   {
 
-    /* OBTEM ALUNO DO BANCO DE DADOS */
-    $obUser = EntityUser::getAlunoById($id);
+    /* OBTEM ALUNO NO BANCO DE DADOS ou REDIS */
+    $obUser = (object) EntityUser::getDataOrCache($id);
 
     /* CASO NÃO EXISTA */
-    if (!$obUser instanceof EntityUser) {
+    if (!$obUser instanceof EntityUser && !$obUser instanceof stdClass) {
       $request->getRouter()->redirect('/admin/alunos');
     }
 
@@ -210,6 +232,7 @@ class Alunos extends Page
 
     /* RETORNA A PÁGINA */
     return parent::getPanel('Deletar aluno > GMFARM', $content, 'alunos');
+
   }
 
   /**
@@ -221,7 +244,7 @@ class Alunos extends Page
   public static function setDeleteAluno($request, $id)
   {
 
-    /* OBTEM MATERIAL NO BANCO DE DADOS */
+    /* OBTEM ALUNO NO BANCO DE DADOS ou REDIS */
     $obUser = EntityUser::getAlunoById($id);
 
     /* CASO NÃO EXISTA */
@@ -232,7 +255,12 @@ class Alunos extends Page
     /* EXCLUI O MATERIAL */
     $obUser->excluir();
 
+    /* EXLUI DO CACHE */
+    $obRedis = new UtilsRedis;
+    $obRedis->delete('alunos', 'aluno'.$id);
+
     /* REDIRECIONA O USUARIO */
     $request->getRouter()->redirect('/admin/alunos?status=deleted');
+
   }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Model\Entity;
 
+use App\Utils\Redis;
 use \WilliamCosta\DatabaseManager\Database;
 
 class User
@@ -61,7 +62,7 @@ class User
   /**
    * Método responsável por retornar o aluno com base no ID
    * @param integer $id_material
-   * @return Estoque
+   * @return User
    */
   public static function getAlunoById($id)
   {
@@ -79,5 +80,55 @@ class User
   public static function getAtributos($where = null, $order = null, $limit = null, $fields = '*')
   {
     return (new Database)->select('usuarios', $where, $order, $limit, $fields);
+  }
+
+  /**
+   * Método responsável por retornar atributos do aluno vindo do banco de dados ou cache
+   * @param integer $id
+   * @return array
+   */
+  public static function getDataOrCache($id){
+    $obRedis = new Redis;
+    return $obRedis->getByKeyAndField('alunos','aluno'.$id) === null ? self::getAlunoById($id) : $obRedis->getByKeyAndField('alunos','aluno'.$id);
+  }
+
+  public static function getAllDataOrCache($obPagination){
+    $obRedis = new Redis;
+    $arr = [];
+
+    if($obRedis->getAll('alunos') === null){
+      
+      $results = self::getAtributos('tipo_usuario = "aluno"', 'id desc', $obPagination->getLimit(), ' id, nome, email, matricula');
+
+      //echo "From Database <br>";
+      while($obUser = $results->fetchObject(EntityUser::class)){
+        $obRedis->insert('alunos', 'aluno'.$obUser->id, [
+          'id' => $obUser->id,
+          'nome' => $obUser->nome,
+          'email' => $obUser->email,
+          'matricula' => $obUser->matricula
+        ]);
+        $arr[] = [
+          'id' => $obUser->id,
+          'nome' => $obUser->nome,
+          'email' => $obUser->email,
+          'matricula' => $obUser->matricula
+        ];
+      }
+      
+    }else{
+      //echo "From Redis <br>";
+      $arr = $obRedis->getAll('alunos');
+    }
+
+    /**
+     * ORDENAÇÃO SEMPRE DO MAIOR ID
+     */
+    uasort($arr, function ($a,$b){
+      return $a['id'] < $b['id'];
+    });
+
+    return $arr;
+
   }
 }
