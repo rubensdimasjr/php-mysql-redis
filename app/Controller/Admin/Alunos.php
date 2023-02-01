@@ -4,22 +4,12 @@ namespace App\Controller\Admin;
 
 use \App\Utils\View;
 use \App\Model\Entity\User as EntityUser;
-use App\Utils\Redis as UtilsRedis;
 use \WilliamCosta\DatabaseManager\Pagination;
-use Predis\Client as Redis;
+use \Rubensdimas\RedisManager\Redis;
 use stdClass;
 
 class Alunos extends Page
 {
-
-  /**
-   * Método responsável por retornar a classe do Redis
-   * @return Redis
-   */
-  private static function getRedis(){
-    $redis = new Redis();
-    return $redis;
-  }
 
   /**
    * Método responsável por obter a renderização dos atributos do aluno 
@@ -194,7 +184,7 @@ class Alunos extends Page
     /**
      * ATUALIZA OS DADOS NO REDIS
      */
-    $obRedis = new UtilsRedis;
+    $obRedis = new Redis;
     $obRedis->edit('alunos', 'aluno'.$id, [
       'id' => $id,
       'nome' => $postVars['nome'] ?? $obUser->nome,
@@ -256,7 +246,7 @@ class Alunos extends Page
     $obUser->excluir();
 
     /* EXLUI DO CACHE */
-    $obRedis = new UtilsRedis;
+    $obRedis = new Redis();
     $obRedis->delete('alunos', 'aluno'.$id);
 
     /* REDIRECIONA O USUARIO */

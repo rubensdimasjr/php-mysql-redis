@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "103015470ea669b2327143f10eaaa3e2",
+    "content-hash": "6704e0843a557da8e9458a893eb83f47",
     "packages": [
         {
             "name": "predis/predis",
@@ -75,6 +75,45 @@
                 }
             ],
             "time": "2023-01-17T20:57:35+00:00"
+        },
+        {
+            "name": "rubensdimas/redis-manager",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rubensdimasjr/redis-manager.git",
+                "reference": "315669b7e1e5083a85e2150dd7c98cbbba97411c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rubensdimasjr/redis-manager/zipball/315669b7e1e5083a85e2150dd7c98cbbba97411c",
+                "reference": "315669b7e1e5083a85e2150dd7c98cbbba97411c",
+                "shasum": ""
+            },
+            "require": {
+                "predis/predis": "^2.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rubensdimas\\RedisManager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Rubens Dimas Jr",
+                    "email": "rubens.jr107@gmail.com"
+                }
+            ],
+            "description": "Repositorio simples de impletacao redis com single design pattern",
+            "support": {
+                "source": "https://github.com/rubensdimasjr/redis-manager/tree/v1.0"
+            },
+            "time": "2023-02-01T11:18:38+00:00"
         },
         {
             "name": "william-costa/database-manager",
@@ -165,5 +204,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }

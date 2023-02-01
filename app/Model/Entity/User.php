@@ -2,7 +2,7 @@
 
 namespace App\Model\Entity;
 
-use App\Utils\Redis;
+use \Rubensdimas\RedisManager\Redis;
 use \WilliamCosta\DatabaseManager\Database;
 
 class User
@@ -100,7 +100,7 @@ class User
       
       $results = self::getAtributos('tipo_usuario = "aluno"', 'id desc', $obPagination->getLimit(), ' id, nome, email, matricula');
 
-      //echo "From Database <br>";
+      echo "From Database <br>";
       while($obUser = $results->fetchObject(EntityUser::class)){
         $obRedis->insert('alunos', 'aluno'.$obUser->id, [
           'id' => $obUser->id,
@@ -117,7 +117,7 @@ class User
       }
       
     }else{
-      //echo "From Redis <br>";
+      echo "From Redis <br>";
       $arr = $obRedis->getAll('alunos');
     }
 
