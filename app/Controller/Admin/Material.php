@@ -3,7 +3,7 @@
 namespace App\Controller\Admin;
 
 use \App\Model\Entity\Estoque as EntityEstoque;
-use \WilliamCosta\DatabaseManager\Pagination;
+use \Rubensdimas\DatabaseManager\Pagination;
 
 use \App\Utils\View;
 

@@ -2,7 +2,7 @@
 
 namespace App\Model\Entity;
 
-use \WilliamCosta\DatabaseManager\Database;
+use \Rubensdimas\DatabaseManager\Database;
 
 class Paciente
 {
@@ -68,7 +68,7 @@ class Paciente
   /**
    * Método responsável por retornar o paciente com base no ID
    * @param integer $id_material
-   * @return Estoque
+   * @return Paciente
    */
   public static function getPacienteById($id)
   {

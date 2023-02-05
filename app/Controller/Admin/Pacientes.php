@@ -4,7 +4,7 @@ namespace App\Controller\Admin;
 
 use \App\Utils\View;
 use \App\Model\Entity\Paciente as EntityPaciente;
-use \WilliamCosta\DatabaseManager\Pagination;
+use \Rubensdimas\DatabaseManager\Pagination;
 
 class Pacientes extends Page
 {

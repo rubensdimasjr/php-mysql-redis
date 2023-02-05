@@ -6,9 +6,9 @@
     }
   },
   "require": {
-    "william-costa/dot-env": "^0.1.0",
-    "william-costa/database-manager": "^0.1.0",
     "predis/predis": "^2.1",
-    "rubensdimas/redis-manager": "^1.0"
+    "rubensdimas/redis-manager": "^0.1.0",
+    "rubensdimas/database-manager": "^1.0",
+    "rubensdimas/dot-env": "^1.0"
   }
 }

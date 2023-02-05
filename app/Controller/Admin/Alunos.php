@@ -4,7 +4,7 @@ namespace App\Controller\Admin;
 
 use \App\Utils\View;
 use \App\Model\Entity\User as EntityUser;
-use \WilliamCosta\DatabaseManager\Pagination;
+use \Rubensdimas\DatabaseManager\Pagination;
 use \Rubensdimas\RedisManager\Redis;
 use stdClass;
 

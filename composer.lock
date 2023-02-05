@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6704e0843a557da8e9458a893eb83f47",
+    "content-hash": "5ac00333b1276407f0124deb7f6d0059",
     "packages": [
         {
             "name": "predis/predis",
@@ -77,17 +77,99 @@
             "time": "2023-01-17T20:57:35+00:00"
         },
         {
-            "name": "rubensdimas/redis-manager",
+            "name": "rubensdimas/database-manager",
             "version": "v1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/rubensdimasjr/redis-manager.git",
-                "reference": "315669b7e1e5083a85e2150dd7c98cbbba97411c"
+                "url": "https://github.com/rubensdimasjr/database-manager.git",
+                "reference": "79bc3990f4ad9fd0fe6506b8a4bc3ded287fc901"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rubensdimasjr/redis-manager/zipball/315669b7e1e5083a85e2150dd7c98cbbba97411c",
-                "reference": "315669b7e1e5083a85e2150dd7c98cbbba97411c",
+                "url": "https://api.github.com/repos/rubensdimasjr/database-manager/zipball/79bc3990f4ad9fd0fe6506b8a4bc3ded287fc901",
+                "reference": "79bc3990f4ad9fd0fe6506b8a4bc3ded287fc901",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rubensdimas\\DatabaseManager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "William Costa",
+                    "email": "canalwdev@gmail.com"
+                },
+                {
+                    "name": "Rubens Dimas Jr",
+                    "email": "rubens.jr107@gmail.com"
+                }
+            ],
+            "description": "A simple library for managing database connections with singleton design pattern, results pagination and building queries in PHP.",
+            "support": {
+                "source": "https://github.com/rubensdimasjr/database-manager/tree/v1.0"
+            },
+            "time": "2023-01-31T20:01:45+00:00"
+        },
+        {
+            "name": "rubensdimas/dot-env",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rubensdimasjr/dot-env.git",
+                "reference": "01ce037591a6f9e6c5a1005fd9d062480c83cff0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rubensdimasjr/dot-env/zipball/01ce037591a6f9e6c5a1005fd9d062480c83cff0",
+                "reference": "01ce037591a6f9e6c5a1005fd9d062480c83cff0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rubensdimas\\DotEnv\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "William Costa",
+                    "email": "calwdev@gmail.com"
+                }
+            ],
+            "description": "A simple library for managing environment variables in PHP. Created by William Costa.",
+            "support": {
+                "source": "https://github.com/rubensdimasjr/dot-env/tree/v1.0"
+            },
+            "time": "2023-01-31T19:59:14+00:00"
+        },
+        {
+            "name": "rubensdimas/redis-manager",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rubensdimasjr/redis-manager.git",
+                "reference": "8c1d900dd29b4d58534b73d315e159b4361e9395"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rubensdimasjr/redis-manager/zipball/8c1d900dd29b4d58534b73d315e159b4361e9395",
+                "reference": "8c1d900dd29b4d58534b73d315e159b4361e9395",
                 "shasum": ""
             },
             "require": {
@@ -111,89 +193,9 @@
             ],
             "description": "Repositorio simples de impletacao redis com single design pattern",
             "support": {
-                "source": "https://github.com/rubensdimasjr/redis-manager/tree/v1.0"
+                "source": "https://github.com/rubensdimasjr/redis-manager/tree/v0.1.0"
             },
-            "time": "2023-02-01T11:18:38+00:00"
-        },
-        {
-            "name": "william-costa/database-manager",
-            "version": "v0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/william-costa/database-manager.git",
-                "reference": "ed871363f27251a882b9e5dc036dcac566b271c4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/william-costa/database-manager/zipball/ed871363f27251a882b9e5dc036dcac566b271c4",
-                "reference": "ed871363f27251a882b9e5dc036dcac566b271c4",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "WilliamCosta\\DatabaseManager\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "William Costa",
-                    "email": "canalwdev@gmail.com"
-                }
-            ],
-            "description": "A simple library for managing database connections, results pagination and building queries in PHP.",
-            "support": {
-                "issues": "https://github.com/william-costa/database-manager/issues",
-                "source": "https://github.com/william-costa/database-manager/tree/v0.1.0"
-            },
-            "time": "2021-03-19T18:51:35+00:00"
-        },
-        {
-            "name": "william-costa/dot-env",
-            "version": "v0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/william-costa/dot-env.git",
-                "reference": "e5eb9b0384b57f2812215fab0e3853c16a4b368e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/william-costa/dot-env/zipball/e5eb9b0384b57f2812215fab0e3853c16a4b368e",
-                "reference": "e5eb9b0384b57f2812215fab0e3853c16a4b368e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "WilliamCosta\\DotEnv\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "William Costa",
-                    "email": "canalwdev@gmail.com"
-                }
-            ],
-            "description": "A simple library for managing environment variables in PHP.",
-            "support": {
-                "issues": "https://github.com/william-costa/dot-env/issues",
-                "source": "https://github.com/william-costa/dot-env/tree/v0.1.0"
-            },
-            "time": "2021-03-19T19:28:14+00:00"
+            "time": "2023-02-01T12:18:37+00:00"
         }
     ],
     "packages-dev": [],

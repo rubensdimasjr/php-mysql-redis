@@ -3,8 +3,8 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use \App\Utils\View;
-use \WilliamCosta\DotEnv\Environment;
-use \WilliamCosta\DatabaseManager\DatabaseConnector;
+use \Rubensdimas\DotEnv\Environment;
+use \Rubensdimas\DatabaseManager\DatabaseConnector;
 use \App\Http\Middleware\Queue as MiddlewareQueue;
 
 /* Carrega variaveis de ambiente */
