@@ -160,16 +160,16 @@
         },
         {
             "name": "rubensdimas/redis-manager",
-            "version": "v0.1.0",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rubensdimasjr/redis-manager.git",
-                "reference": "8c1d900dd29b4d58534b73d315e159b4361e9395"
+                "reference": "70e37ac2630f19c1ddeb3c241c55a4323442aa9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rubensdimasjr/redis-manager/zipball/8c1d900dd29b4d58534b73d315e159b4361e9395",
-                "reference": "8c1d900dd29b4d58534b73d315e159b4361e9395",
+                "url": "https://api.github.com/repos/rubensdimasjr/redis-manager/zipball/70e37ac2630f19c1ddeb3c241c55a4323442aa9d",
+                "reference": "70e37ac2630f19c1ddeb3c241c55a4323442aa9d",
                 "shasum": ""
             },
             "require": {
@@ -193,9 +193,9 @@
             ],
             "description": "Repositorio simples de impletacao redis com single design pattern",
             "support": {
-                "source": "https://github.com/rubensdimasjr/redis-manager/tree/v0.1.0"
+                "source": "https://github.com/rubensdimasjr/redis-manager/tree/v0.1.1"
             },
-            "time": "2023-02-01T12:18:37+00:00"
+            "time": "2023-02-06T00:07:48+00:00"
         }
     ],
     "packages-dev": [],
