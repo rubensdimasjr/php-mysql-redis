@@ -87,22 +87,24 @@ class User
    * @param integer $id
    * @return array
    */
-  public static function getDataOrCache($id){
+  public static function getDataOrCache($id)
+  {
     $obRedis = new Redis;
-    return $obRedis->getByKeyAndField('alunos','aluno'.$id) === null ? self::getAlunoById($id) : $obRedis->getByKeyAndField('alunos','aluno'.$id);
+    return $obRedis->getByKeyAndField('alunos', 'aluno' . $id) === null ? self::getAlunoById($id) : $obRedis->getByKeyAndField('alunos', 'aluno' . $id);
   }
 
-  public static function getAllDataOrCache($obPagination){
+  public static function getAllDataOrCache($obPagination)
+  {
     $obRedis = new Redis;
     $arr = [];
 
-    if($obRedis->getAll('alunos') === null){
-      
+    if ($obRedis->getAll('alunos') === null) {
+
       $results = self::getAtributos('tipo_usuario = "aluno"', 'id desc', $obPagination->getLimit(), ' id, nome, email, matricula');
 
       echo "From Database <br>";
-      while($obUser = $results->fetchObject(self::class)){
-        $obRedis->insert('alunos', 'aluno'.$obUser->id, [
+      while ($obUser = $results->fetchObject(self::class)) {
+        $obRedis->insert('alunos', 'aluno' . $obUser->id, [
           'id' => $obUser->id,
           'nome' => $obUser->nome,
           'email' => $obUser->email,
@@ -115,8 +117,7 @@ class User
           'matricula' => $obUser->matricula
         ];
       }
-      
-    }else{
+    } else {
       echo "From Redis <br>";
       $arr = $obRedis->getAll('alunos');
     }
@@ -124,11 +125,10 @@ class User
     /**
      * ORDENAÇÃO SEMPRE DO MAIOR ID
      */
-    uasort($arr, function ($a,$b){
+    uasort($arr, function ($a, $b) {
       return $a['id'] < $b['id'];
     });
 
     return $arr;
-
   }
 }

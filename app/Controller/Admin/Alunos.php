@@ -35,7 +35,7 @@ class Alunos extends Page
     /**
      * EXIBIÇÃO DOS DADOS
      */
-    foreach(EntityUser::getAllDataOrCache($obPagination) as $item){
+    foreach (EntityUser::getAllDataOrCache($obPagination) as $item) {
       $atributos .= View::render('admin/modules/alunos/atributo', [
         'id' => $item['id'],
         'nome' => $item['nome'],
@@ -185,7 +185,7 @@ class Alunos extends Page
      * ATUALIZA OS DADOS NO REDIS
      */
     $obRedis = new Redis;
-    $obRedis->edit('alunos', 'aluno'.$id, [
+    $obRedis->edit('alunos', 'aluno' . $id, [
       'id' => $id,
       'nome' => $postVars['nome'] ?? $obUser->nome,
       'email' => $postVars['email'] ?? $obUser->email,
@@ -222,7 +222,6 @@ class Alunos extends Page
 
     /* RETORNA A PÁGINA */
     return parent::getPanel('Deletar aluno > GMFARM', $content, 'alunos');
-
   }
 
   /**
@@ -247,10 +246,9 @@ class Alunos extends Page
 
     /* EXLUI DO CACHE */
     $obRedis = new Redis();
-    $obRedis->delete('alunos', 'aluno'.$id);
+    $obRedis->delete('alunos', 'aluno' . $id);
 
     /* REDIRECIONA O USUARIO */
     $request->getRouter()->redirect('/admin/alunos?status=deleted');
-
   }
 }
