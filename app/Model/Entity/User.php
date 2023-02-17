@@ -17,6 +17,8 @@ class User
 
   public $senha;
 
+  public $tipo_usuario;
+
   public function cadastrar()
   {
     /* INSERE NO BANCO DE DADOS */
@@ -24,7 +26,8 @@ class User
       'nome' => $this->nome,
       'email' => $this->email,
       'matricula' => $this->matricula,
-      'senha' => $this->senha
+      'senha' => $this->senha,
+      'tipo_usuario' => $this->tipo_usuario
     ]);
 
     /* Sucesso */
@@ -38,7 +41,8 @@ class User
       'nome' => $this->nome,
       'email' => $this->email,
       'matricula' => $this->matricula,
-      'senha' => $this->senha
+      'senha' => $this->senha,
+      'tipo_usuario' => $this->tipo_usuario
     ]);
   }
 
